@@ -6,7 +6,7 @@
 Route::resource('projects', 'ProjectsController');
 ```
 
-Para ver las rutas generadas, ejecutar el comando php artisan route:list
+Para ver las rutas generadas, ejecutar el comando `php artisan route:list`
 
 
 - Si no se encuentra un registro en la BBDD, lanzar un error 404:
