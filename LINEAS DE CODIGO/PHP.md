@@ -62,3 +62,56 @@ return back();
 ```
 dd('hola');
 ```
+
+- Obtener un parámetro de configuración del archivo `.env`:
+
+    - Declaramos la clave/valor que deseemos en el archivo `.env`, por ejemplo:
+    ```
+    TWITTER_APIKEY=souryd12oi323io
+    ```
+    - Obtenemos el valor de esta clave con la función `env()`, ejemplo:
+    ```
+    $twitterApiKey = env('TWITTER_APIKEY');
+    ```
+    - **Ejemplo completo** con varios archivos:
+        - `config/services.php`
+        ```php
+        return [
+            // ...
+            'twitter' => [
+                'apiKey' => env('TWITTER_APIKEY')
+            ]
+        ];
+        ```
+        - `app/Services/Twitter.php`
+        ```php
+        <?php
+
+        namespace App\Services;
+
+        class Twitter
+        {
+            protected $apiKey;
+
+            public function __construct($apiKey)
+            {
+                $this->apiKey = $apiKey;
+            }
+        }
+        ```
+        - `app/Providers/AppServiceProvider.php` (utilizamos la función `config()` para obtener el valor del parámetro)
+        ```php
+        use App\Services\Twitter;
+        //...
+        /**
+        * Register any application services.
+        *
+        * @return void
+        */
+        public function register()
+        {
+            $this->app->singleton(Twitter::class, function () {
+                return new Twitter(config('services.twitter.apiKey'));
+            });
+        }
+        ```
