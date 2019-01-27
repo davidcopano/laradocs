@@ -56,3 +56,9 @@ return back();
    ```blade
    {{$errors->has('title') ? 'has-error' : ''}}
    ```
+
+- Hacer un `var_dump()` de una variable, e inmediatamente un `die()`:
+
+```
+dd('hola');
+```
