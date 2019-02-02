@@ -48,3 +48,15 @@
     ```blade
     @include('errors')
     ```
+
+- Diferenciar si un usuario está logeado en la web:
+    - `@guest` es cuando el usuario no está logeado (funciona como `@if`, `@else` y `@endif`)
+    - `route('login')` genera una ruta con el nombre pasado
+    - `Auth::user()->name` muestra datos del usuario logeado (el nombre en este caso)
+    ```blade
+    @guest
+        <a href="{{route('login')}}">Iniciar sesión</a>
+    @else
+        <p>Hola, {{Auth::user()->name}}</p>
+    @endguest
+    ```
