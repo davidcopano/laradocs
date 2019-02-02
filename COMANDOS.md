@@ -13,3 +13,9 @@ Para +info, ejecutar el comando `php artisan route:list`
 ```
 php artisan make:model NombreModelo -m -f
 ```
+
+- Generar sistema de autenticación (inicio de sesión/registro, con sus rutas, vistas Blade, etc):
+
+```
+php artisan make:auth
+```
