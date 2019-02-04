@@ -11,3 +11,9 @@ $projects = Project::where('owner_id', auth()->id())->get();
 ```php
 $projects = Project::all();
 ```
+
+- Si no se encuentra un registro en la BBDD, lanzar un error 404:
+
+```php
+$project = Project::findOrFail($id);
+```

@@ -2,7 +2,7 @@
 
 - Generar automaticamente las rutas siguiendo la convención REST de Laravel:
 
-```
+```php
 Route::resource('projects', 'ProjectsController');
 ```
 
@@ -11,13 +11,13 @@ Para ver las rutas generadas, ejecutar el comando `php artisan route:list`
 
 - Si no se encuentra un registro en la BBDD, lanzar un error 404:
 
-```
+```php
 $project = Project::findOrFail($id);
 ```
 
 - Validar campos de un formulario:
 
-```
+```php
 // devuelve un array asociativo con los campos del form. ya validados
 $validatedAttributes = request()->validate([
     'title' => ['required', 'min:3'],
@@ -29,20 +29,20 @@ Project::create($validatedAttributes);
 
 - Volver a la URL anterior (en vez de usar return `redirect('/url')`):
 
-```
+```php
 return back();
 ```
 
 - Comprobar errores en un formulario:
 
-    - Validamos los campos recibidos del form. 
+    - Validamos los campos recibidos del form. (devuelve los atributos que se han validado);
    ```php
-   request()->validate([
+   $attributes = request()->validate([
       'description' => 'required'
    ]);
     ```
 
-   - Mostramos los errores que hubieran en el form.
+   - Mostramos los errores que hubieran en el form.:
    ```blade
    @if($errors->any())
        <ul>
@@ -59,7 +59,7 @@ return back();
 
 - Hacer un `var_dump()` de una variable, e inmediatamente un `die()`:
 
-```
+```php
 dd('hola');
 ```
 
@@ -99,15 +99,12 @@ dd('hola');
             }
         }
         ```
-        - `app/Providers/AppServiceProvider.php` (utilizamos la función `config()` para obtener el valor del parámetro)
+        - `app/Providers/AppServiceProvider.php` (utilizamos la función `config()` para obtener el valor del parámetro de `config/services.php`)
         ```php
         use App\Services\Twitter;
-        //...
-        /**
-        * Register any application services.
-        *
-        * @return void
-        */
+
+        // ...
+        
         public function register()
         {
             $this->app->singleton(Twitter::class, function () {
