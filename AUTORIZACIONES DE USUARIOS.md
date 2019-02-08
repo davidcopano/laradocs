@@ -12,7 +12,12 @@ Para llevar a cabo este ejemplo, debemos hacer lo siguiente:
 
 ```php
 // ...
-public function view(User $user, Project $project)
+
+/*
+  Ponemos la interrogación en User $user para cuando 
+  NO haya usuario logeado
+*/ 
+public function view(?User $user, Project $project)
 {
     return $project->owner_id == $user->id;
 }
