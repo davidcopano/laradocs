@@ -1,5 +1,7 @@
 # Autorizaciones de usuarios para realizar acciones.
 
++info: https://laracasts.com/series/laravel-from-scratch-2018/episodes/27
+
 En muchas ocasiones, debemos restringir las acciones del usuario para que solo pueda hacerlas sobre sus cosas (por ejemplo, un usuario **solo** puede ejecutar ciertas acciones sobre sus proyectos). Laravel ofrece las llamadas **policies** para resolver esto.
 
 Para llevar a cabo este ejemplo, debemos hacer lo siguiente:
@@ -47,4 +49,14 @@ public function show(Project $project)
     return view('projects.show', compact('project'));
 }
 // ...
+```
+
+## Autorizaciones en las vistas:
+
+Para mostrar u ocultar código HTML en las vistas Blade, podemos usar lo siguiente:
+
+```blade
+@can('update', $project)
+    <a href="#">Update</a>
+@endcan
 ```
