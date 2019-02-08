@@ -112,3 +112,9 @@ dd('hola');
             });
         }
         ```
+
+- Lanzar error 403:
+
+```php
+abort(403);
+```
