@@ -117,4 +117,7 @@ dd('hola');
 
 ```php
 abort(403);
+
+// también se puede poner de la siguiente forma:
+abort_if($condicion, 403, 'Mensaje de error (esto es OPCIONAL)');
 ```
