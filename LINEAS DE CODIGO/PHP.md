@@ -26,6 +26,12 @@ $validatedAttributes = request()->validate([
 Project::create($validatedAttributes);
 ```
 
+- Obtener el objeto/registro en la BBDD que se ha creado:
+
+```php
+// ...
+$project = Project::create($validatedAttributes);
+```
 
 - Volver a la URL anterior (en vez de usar return `redirect('/url')`):
 
