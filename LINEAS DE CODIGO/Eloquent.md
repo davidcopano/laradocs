@@ -17,3 +17,48 @@ $projects = Project::all();
 ```php
 $project = Project::findOrFail($id);
 ```
+
+- Obtener el objeto/registro en la BBDD que se ha creado:
+
+```php
+$validatedAttributes = request()->validate([
+    'title' => ['required', 'min:3'],
+    'description' => ['required', 'min:3']
+]);
+$project = Project::create($validatedAttributes);
+```
+
+## Ampliar modelos de Eloquent con funciones personalizadas en su clase
+
+Hay ocasiones en las que debemos mejorar la lectura del código, para tenerlo lo más simple posible. Por ejemplo, para mejorar el primer punto (`Obtener registros según un campo determinado`) podemos hacer lo siguiente:
+
+**NOTA**: Para seguir este ejemplo, debemos tener las relaciones ya asociadas, en este caso sería así (archivo `database/migrations/<archivo de migracion>.php`):
+
+```php
+class CreateProjectsTable extends Migration
+{
+    // ...
+    public function up()
+    {
+        Schema::create('projects', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('owner_id');
+            $table->string('title');
+            $table->text('description');
+            $table->timestamps();
+
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+        });
+    }
+}
+```
+
+Y tener ya ejecutada en la BBDD esta migración.
+
+Una vez realizado esto, ya podemos seguir estos pasos:
+
+1. Abrir nuestro modelo (en este caso User -ubicado en `app/User.php`-) y añadir la siguiente función (para obtener los proyectos del usuario):
+
+```php
+
+```
