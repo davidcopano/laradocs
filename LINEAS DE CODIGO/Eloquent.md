@@ -28,6 +28,12 @@ $validatedAttributes = request()->validate([
 $project = Project::create($validatedAttributes);
 ```
 
+- Obtener el último registro de la BBDD basado en un modelo:
+
+```php
+$project = Project::latest()->first();
+```
+
 ## Ampliar modelos de Eloquent con funciones personalizadas en su clase
 
 Hay ocasiones en las que debemos mejorar la lectura del código, para tenerlo lo más simple posible. Por ejemplo, para mejorar el primer punto (`Obtener registros según un campo determinado`) podemos hacer lo siguiente:
@@ -60,5 +66,19 @@ Una vez realizado esto, ya podemos seguir estos pasos:
 1. Abrir nuestro modelo (en este caso User -ubicado en `app/User.php`-) y añadir la siguiente función (para obtener los proyectos del usuario):
 
 ```php
+class User extends Authenticatable
+{
+    // ...
 
+    public function projects()
+    {
+        // con 'owner_id' sobreescribimos la foreign key
+        // si no lo ponemos, en este caso en la tabla 'projects' buscaría el 
+        // campo 'user_id', el cual no existe
+
+        // --- ESTE 2do PARÁMETRO ES OPCIONAL ---
+
+        return $this->hasMany(Project::class, 'owner_id');
+    }
+}
 ```
