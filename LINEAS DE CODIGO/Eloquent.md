@@ -82,3 +82,23 @@ class User extends Authenticatable
     }
 }
 ```
+
+2. En nuestro controlador, ya podremos llamar a esta función que nos devuelve los proyectos del usuario logeado:
+
+```php
+// ...
+$projects = auth()->user()->projects;
+```
+
+También puede ocurrir que de un proyecto queramos conseguir su propietario, en este caso abrimos el modelo Eloquent (`app/Project.php`) y creamos la siguiente función (al igual que antes, en el archivo de migración **deben** estar las relaciones ya asociadas):
+
+```php
+class Project extends Model
+{
+    // ...
+    public function owner()
+    {
+        return $this->hasOne(User::class);
+    }
+}
+```
