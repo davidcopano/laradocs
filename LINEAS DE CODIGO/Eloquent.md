@@ -98,7 +98,9 @@ class Project extends Model
     // ...
     public function owner()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }
 ```
+
++info de la diferencia de `belongsTo` y `hasOne` [aquí](https://stackoverflow.com/questions/30058949/should-i-use-belongsto-or-hasone-in-laravel)
