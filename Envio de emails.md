@@ -1,6 +1,8 @@
 # Envío de emails con Laravel
 
-**NOTA**: Debemos tener configurados los parámetros de email (en el archivo `.env` son los parámetros `MAIL_DRIVER`, `MAIL_HOST`, etc) para que se envíen los email correctamente.
+**NOTA**: Debemos tener configurados los parámetros de email (en el archivo `.env` son los parámetros `MAIL_DRIVER`, `MAIL_HOST`, etc) para que se envíen los emails correctamente.
+
+**NOTA 2**: Para evitar el envío de emails en local a otras direcciones de correo, podemos especificar en nuestro archivo `.env` que los emails se guarden en un archivo .log; para hacer esto ponemos el parámetro `MAIL_DRIVER=log`. Este log lo podemos ver en la ruta `storage/logs/laravel-<fecha del log>.log`,  o bien si tenemos el paquete [Laravel Telescope](https://github.com/davidcopano/laradocs/blob/master/Depurar%20con%20Laravel.md) instalado en el proyecto.
 
 Para enviar emails siguiendo la convención de Laravel, debemos hacer lo siguiente:
 
