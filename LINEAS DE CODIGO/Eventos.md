@@ -38,6 +38,8 @@ class ProjectCreated
 
 Se creará un archivo (en este caso `SendProjectCreatedNotification.php`) en el directorio `app/Listeners`.
 
+**NOTA**: Podemos crear tantos Listeners de un evento como queramos. Esto lo podremos ver más abajo.
+
 4. Con el Listener ya creado, ya podemos abrir el archivo (ubicado en `app/Listeners/SendProjectCreatedNotification.php`) y hacer lo que queramos cuando se produzca el evento. En este caso, enviaremos un email al usuario que ha creado un proyecto:
 
 ```php
@@ -99,21 +101,13 @@ class SendProjectCreatedNotification
     ];
     ```
 
-6. Una vez completados todos estos pasos, ya solo queda llamar a este evento en nuestro controlador y que el Listener maneje el evento:
+6. Una vez completados todos estos pasos, ya solo queda registrar este evento en nuestro modelo Eloquent. En este caso, se llamará a este evento cuando se cree un proyecto. Para poder hacer esto, creamos una propiedad protegida en el modelo, llamada `$dispatchesEvents`:
 
-    - `app/Http/Controllers/ProjectsController.php`:
+    - `app/Project.php`:
     ```php
+    use App\Events\ProjectCreated;
     // ...
-    public function store()
-    {
-        $validatedAttributes = $this->validateProject();
-        $validatedAttributes['owner_id'] = auth()->id();
-
-        $project = Project::create($validatedAttributes);
-
-        // llamamos al evento
-        event(new ProjectCreated($project));
-
-        return redirect('/projects');
-    }
+    protected $dispatchesEvents = [
+        'created' => ProjectCreated::class
+    ];
     ```
