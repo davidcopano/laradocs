@@ -80,6 +80,10 @@ Esto nos creará una migración para esta tabla de notificaciones. Para completa
 
 **NOTA**: Podremos acceder a las notificaciones del usuario con `$user->notifications`, o `auth()->user()->notifications`.
 
+También podremos marcar una notificación como **leída** con `$user->notifications->first()->markAsRead();`.
+
+Para acceder a las notificaciones **no leídas**, usaremos `$user->unreadNotifications`.
+
 4. Una vez hemos editada nuestra notificación anterior, podemos enviar esta notificación de la siguiente forma:
 
 ```php
