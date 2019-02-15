@@ -75,3 +75,45 @@ class SendProjectCreatedNotification
     }
 }
 ```
+
+5. Una vez ya tenemos creado nuestro evento y Listener creado, tenemos que registrar este Listener para que maneje el evento. Para poder conseguir esto, abrimos el archivo `app/Providers/EventServiceProvider.php`.
+
+    Podemos observar que hay un array llamado `$listen` conteniendo ya un evento. Añadimos nuestro evento y Listener a este array de la siguiente forma:
+
+    ```php
+    use App\Events\ProjectCreated;
+    use App\Listeners\SendProjectCreatedNotification;
+    // ...
+    protected $listen = [
+        Registered::class => [
+            SendEmailVerificationNotification::class,
+        ],
+        // clase del evento
+        ProjectCreated::class => [
+            // clase del Listener
+
+            // como podemos observar, esto un array, por tanto podremos 
+            // añadir **TODOS** los Listeners que queramos a este evento
+            SendProjectCreatedNotification::class
+        ]
+    ];
+    ```
+
+6. Una vez completados todos estos pasos, ya solo queda llamar a este evento en nuestro controlador y que el Listener maneje el evento:
+
+    - `app/Http/Controllers/ProjectsController.php`:
+    ```php
+    // ...
+    public function store()
+    {
+        $validatedAttributes = $this->validateProject();
+        $validatedAttributes['owner_id'] = auth()->id();
+
+        $project = Project::create($validatedAttributes);
+
+        // llamamos al evento
+        event(new ProjectCreated($project));
+
+        return redirect('/projects');
+    }
+    ```
