@@ -60,3 +60,10 @@
         <p>Hola, {{Auth::user()->name}}</p>
     @endguest
     ```
+
+- Enlazar un archivo CSS o JS:
+
+```blade
+<link rel="stylesheet" href="{{asset('css/app.css')}}">
+<script src="{{asset('js/app.js')}}"></script>
+```
