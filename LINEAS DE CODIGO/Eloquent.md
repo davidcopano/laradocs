@@ -1,17 +1,5 @@
 # Líneas de código para modelos Eloquent
 
-- Obtener registros según un campo determinado:
-
-```php
-$projects = Project::where('owner_id', auth()->id())->get();
-```
-
-- Obtener **todos** los registros:
-
-```php
-$projects = Project::all();
-```
-
 - Si no se encuentra un registro en la BBDD, lanzar un error 404:
 
 ```php
@@ -26,12 +14,6 @@ $validatedAttributes = request()->validate([
     'description' => ['required', 'min:3']
 ]);
 $project = Project::create($validatedAttributes);
-```
-
-- Obtener el último registro de la BBDD basado en un modelo:
-
-```php
-$project = Project::latest()->first();
 ```
 
 ## Ampliar modelos de Eloquent con funciones personalizadas en su clase
@@ -104,3 +86,38 @@ class Project extends Model
 ```
 
 +info de la diferencia de `belongsTo` y `hasOne` [aquí](https://stackoverflow.com/questions/30058949/should-i-use-belongsto-or-hasone-in-laravel)
+
+## Métodos de Eloquent útiles
+
+- Obtener **todos** los registros:
+
+```php
+$projects = Project::all();
+```
+
+- Obtener registros según un campo determinado:
+
+```php
+$projects = Project::where('owner_id', auth()->id())->get();
+```
+
+- Obtener el **primer** registro:
+
+```php
+$project = Project::first();
+```
+
+- Obtener el **último** registro:
+
+```php
+$project = Project::latest()->first();
+```
+
+## Colecciones Eloquent
+
+Las colecciones Eloquent pueden tratarse como un array. Por ejemplo, para acceder al primer registro de la colección que devuelve el método `all()` podemos hacer lo siguiente:
+
+```php
+$users = \App\Users::all();
+dd($users[0]);
+```
