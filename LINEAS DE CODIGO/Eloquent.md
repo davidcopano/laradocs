@@ -95,22 +95,36 @@ class Project extends Model
 $projects = Project::all();
 ```
 
-- Obtener registros según un campo determinado:
+- Obtener registros según un campo determinado (OJO: estos ejemplos devuelven una **colección** Eloquent, +info de las colecciones abajo):
 
 ```php
 $projects = Project::where('owner_id', auth()->id())->get();
+// ...
+$user = User::where('email', 'johndoe@example.com')->get();
 ```
 
 - Obtener el **primer** registro:
 
 ```php
-$project = Project::first();
+$firstProject = Project::first();
+```
+
+- Obtener el **primer** registro que contenga un campo determinado:
+
+```php
+$user = User::where('email', 'johndoe@example.com')->first();
 ```
 
 - Obtener el **último** registro:
 
 ```php
-$project = Project::latest()->first();
+$lastProject = Project::latest()->first();
+```
+
+- Obtener un registro **según un ID determinado**:
+
+```php
+$projectId3 = Project::find(3);
 ```
 
 ## Colecciones Eloquent
