@@ -113,9 +113,17 @@ dd('hola');
 
 - Lanzar error 403:
 
-```php
-abort(403);
+    ```php
+    abort(403);
 
-// también se puede poner de la siguiente forma:
-abort_if($condicion, 403, 'Mensaje de error (esto es OPCIONAL)');
+    // también se puede poner de la siguiente forma:
+    abort_if($condicion, 403, 'Mensaje de error (esto es OPCIONAL)');
+    ```
+
+- Devolver un JSON automáticamente de una colección Eloquent:
+
+```php
+// ...
+$projects = Project::all();
+return $projects;
 ```

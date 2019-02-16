@@ -89,6 +89,15 @@ class Project extends Model
 
 ## Métodos de Eloquent útiles
 
+**NOTA**: Las colecciones Eloquent pueden tratarse como un array. Por ejemplo, para acceder al primer registro de la colección que devuelve el método `all()`, podemos hacer lo siguiente:
+
+```php
+$users = \App\Users::all();
+dd($users[0]);
+```
+
+A continuación se listan algunos métodos Eloquent bastante útiles que tener en cuenta:
+
 - Obtener **todos** los registros:
 
 ```php
@@ -127,11 +136,40 @@ $lastProject = Project::latest()->first();
 $projectId3 = Project::find(3);
 ```
 
-## Colecciones Eloquent
-
-Las colecciones Eloquent pueden tratarse como un array. Por ejemplo, para acceder al primer registro de la colección que devuelve el método `all()` podemos hacer lo siguiente:
+- Obtener los resultados de un campo determinado (**DEVUELVE UNA COLECCIÓN**):
 
 ```php
-$users = \App\Users::all();
-dd($users[0]);
+$userEmails = User::pluck('email');
+```
+
+- Convertir una colección Eloquent a un array:
+
+```php
+$projectsArray = Project::all()->toArray();
+```
+
+- Devolver un JSON automáticamente de una colección Eloquent:
+
+```php
+// ...
+$projects = Project::all();
+return $projects;
+```
+
+- Iterar sobre cada resultado de una colección Eloquent:
+
+```php
+// ...
+$users = User::all();
+$userNames = $users->map(function($user) {
+    return $user->name; 
+});
+// devuelve una colección con los nombres de los usuarios, en este caso:
+
+/* Illuminate\Support\Collection {#3239
+    all: [
+       "JohnDoe",
+       "JaneDoe",
+    ],
+} */
 ```
