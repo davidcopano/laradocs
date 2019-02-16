@@ -173,3 +173,31 @@ $userNames = $users->map(function($user) {
     ],
 } */
 ```
+
+- Filtrar los resultados de una colección (obtener los usuarios con un ID mayor o igual que 3, en este caso):
+
+```php
+// ...
+$users = User::all();
+$users->filter(function($user) { 
+    return $user->id >= 3; 
+});
+// devuelve una colección con los usuarios que cumplan este requisito
+```
+
+- Convertir un array a una colección Eloquent (esto puede ser útil para iterar sobre cada ítem con las funciones `map()`, `filter()` de arriba):
+
+```php
+$collection = collect(['foo', 'bar']);
+$uppercaseItems = $collection->map(function($item) { 
+    return strtoupper($item);  
+});
+```
+
+- Devolver la suma de un campo específico:
+
+```php
+// ...
+$users = User::all();
+$idSum = $users->sum('id');
+```
