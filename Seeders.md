@@ -56,3 +56,18 @@ class DatabaseSeeder extends Seeder
 En caso de que tengamos múltiples seeders, podemos pasar la opción `--class`, la cual permite ejecutar solamente el seeder pasado como argumento:
 
 `php artisan db:seed --class=UserSeeder`
+
+## Usando Model Factories para generar datos de prueba
+
+Ir rellenando manualmente registros de prueba en la BBDD puede ser engorroso 
+
+Podemos utilizar las Model Factories de Laravel para generar rápidamente grandes cantidades de registros en la BBDD. 
+
+Una vez que hayamos definido nuestras Factories, podemos utilizar la función `factory()` para insertar registros en la BBDD:
+
+```php
+public function run()
+{
+    factory(App\User::class, 50)->create();
+}
+```
