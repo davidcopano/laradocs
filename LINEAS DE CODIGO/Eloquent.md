@@ -16,6 +16,12 @@ $validatedAttributes = request()->validate([
 $project = Project::create($validatedAttributes);
 ```
 
+- Actualización **masiva** de campos, cumpliéndose antes una condición:
+
+```php
+User::where('age', '<', 18)->update(['under_18' => 1]);
+```
+
 ## Ampliar modelos de Eloquent con funciones personalizadas en su clase
 
 Hay ocasiones en las que debemos mejorar la lectura del código, para tenerlo lo más simple posible. Por ejemplo, para mejorar el primer punto (`Obtener registros según un campo determinado`) podemos hacer lo siguiente:
