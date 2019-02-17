@@ -203,10 +203,25 @@ $userNames = $users->map(function($user) {
 ```php
 // ...
 $users = User::all();
-$users->filter(function($user) { 
+$filteredUsers = $users->filter(function($user) { 
     return $user->id >= 3; 
 });
 // devuelve una colección con los usuarios que cumplan este requisito
+```
+
+Otra forma más rápida de filtrar por un **campo** sería la siguiente:
+
+```php
+// ...
+$users = User::all();
+$usersEmailVerified = $users->filter->email_verified_at;
+// devuelve una colección con los usuarios que cumplan este requisito
+```
+
+**NOTA**: Esto también puede refactorizarse añadiendo una nueva función al modelo Eloquent (archivo `app/User.php`):
+
+```php
+
 ```
 
 - Convertir un array a una colección Eloquent (esto puede ser útil para iterar sobre cada ítem con las funciones `map()`, `filter()` de arriba):
