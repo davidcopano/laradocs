@@ -59,7 +59,7 @@ En caso de que tengamos múltiples seeders, podemos pasar la opción `--class`, 
 
 ## Usando Model Factories para generar datos de prueba
 
-Ir rellenando manualmente registros de prueba en la BBDD puede ser engorroso 
+Ir rellenando manualmente registros de prueba en la BBDD puede ser engorroso.
 
 Podemos utilizar las Model Factories de Laravel para generar rápidamente grandes cantidades de registros en la BBDD. 
 
@@ -71,3 +71,5 @@ public function run()
     factory(App\User::class, 50)->create();
 }
 ```
+
+[+info de las Factories aquí](https://github.com/davidcopano/laradocs/blob/master/Model%20Factories.md)

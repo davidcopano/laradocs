@@ -23,4 +23,4 @@ $factory->define(App\Project::class, function (Faker $faker) {
 });
 ```
 
-3. Generar un seeder para esta Factory que hemos creado y registrarlo, [+info aquí](https://www.google.com)
+3. Generar un seeder para esta Factory que hemos creado y registrarlo, [+info de los seeders aquí](https://github.com/davidcopano/laradocs/blob/master/Seeders.md)
