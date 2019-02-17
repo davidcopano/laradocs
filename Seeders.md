@@ -8,7 +8,7 @@ Para realizar esto, hacemos lo siguiente:
 
 `php artisan make:seeder UserSeeder`
 
-Al ejecutar este comando se generará un archivo `UserSeeder.php` dentro del directorio `database/seeds`.
+Al ejecutar este comando, se generará un archivo `UserSeeder.php` dentro del directorio `database/seeds`.
 
 2. Abrimos el archivo `UserSeeder.php` y dentro del método `run()` añadimos nuestro código para añadir registros de prueba:
 
