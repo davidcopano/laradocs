@@ -148,6 +148,24 @@ $userEmails = User::pluck('email');
 $projectsArray = Project::all()->toArray();
 ```
 
+- Consulta LIKE:
+
+```php
+Project::where('title', 'LIKE', '%new%')->get();
+```
+
+- Consulta IN:
+
+```php
+$users = User::whereIn('id', array(1, 2, 3))->get();
+```
+
+- Obtener campos específicos:
+
+```php
+Project::select('title','description')->where('id', 1)->get();
+```
+
 - Devolver un JSON automáticamente de una colección Eloquent:
 
 ```php

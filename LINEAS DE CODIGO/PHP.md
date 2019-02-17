@@ -127,3 +127,11 @@ dd('hola');
 $projects = Project::all();
 return $projects;
 ```
+
+- Generar una contraseña encriptada:
+
+```php
+$password = 'JohnDoe';
+$hashedPassword = Hash::make($password);
+echo $hashedPassword; // $2y$10$jSAr/RwmjhwioDlJErOk9OQEO7huLz9O6Iuf/udyGbHPiTNuB3Iuy
+```
