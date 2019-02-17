@@ -221,7 +221,15 @@ $usersEmailVerified = $users->filter->email_verified_at;
 **NOTA**: Esto también puede refactorizarse añadiendo una nueva función al modelo Eloquent (archivo `app/User.php`):
 
 ```php
+// ...
+public function isVerified()
+{
+    return $this->email_verified_at;
+}
 
+// ...
+$users = User::all();
+$usersEmailVerified = $users->filter->isVerified();
 ```
 
 - Convertir un array a una colección Eloquent (esto puede ser útil para iterar sobre cada ítem con las funciones `map()`, `filter()` de arriba):
