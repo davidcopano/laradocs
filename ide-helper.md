@@ -6,7 +6,7 @@ Este plugin provee autocompletado en IDEs como PHPStorm, etc.
 
 Ejecuta este comando en el directorio raíz del proyecto:
 
-`composer require barryvdh/laravel-ide-helper`
+`composer require --dev barryvdh/laravel-ide-helper`
 
 ## Uso
 
