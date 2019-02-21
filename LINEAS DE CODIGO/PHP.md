@@ -110,6 +110,17 @@ dd('hola');
             });
         }
         ```
+        
+        - **NOTA**: Con el ejemplo de arriba completo ya podremos utilizar **la clase Twitter ya instanciada** en nuestro controlador:
+        
+        ```php
+        use App\Services\Twitter;
+        // ...
+        public function index(Twitter $twitter)
+        {
+            dd($twitter);
+        }
+        ```
 
 - Lanzar error 403:
 
