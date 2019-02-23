@@ -67,3 +67,19 @@
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 <script src="{{asset('js/app.js')}}"></script>
 ```
+
+- Hay veces que al poner `@section` y `@endsection` se producen espacios/saltos de línea:
+
+![https://i.imgur.com/uo0Ro1h.png](https://i.imgur.com/uo0Ro1h.png)
+
+![https://i.imgur.com/4plYmi5.png](https://i.imgur.com/4plYmi5.png)
+
+Para solucionar esto, le pasamos a `@section` como 2do parámetro el texto que queramos:
+
+```blade
+@section('body_class', 'index')
+```
+
+Con esto ya se solucionan los espacios en blanco que se producían antes:
+
+![https://i.imgur.com/eiHEvrk.png](https://i.imgur.com/eiHEvrk.png)
