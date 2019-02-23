@@ -146,3 +146,10 @@ $password = 'JohnDoe';
 $hashedPassword = Hash::make($password);
 echo $hashedPassword; // $2y$10$jSAr/RwmjhwioDlJErOk9OQEO7huLz9O6Iuf/udyGbHPiTNuB3Iuy
 ```
+
+- Subir un archivo, devolviendo el nombre único con el que se ha subido:
+
+```php
+// le pasamos a store() la carpeta donde se subirá el archivo
+$path = $request->file('avatar')->store('avatars');
+```
