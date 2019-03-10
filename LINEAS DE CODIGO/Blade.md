@@ -83,3 +83,11 @@ Para solucionar esto, le pasamos a `@section` como 2do parámetro el texto que q
 Con esto ya se solucionan los espacios en blanco que se producían antes:
 
 ![https://i.imgur.com/eiHEvrk.png](https://i.imgur.com/eiHEvrk.png)
+
+- Convertir variable a JSON:
+
+```blade
+<script>
+    var projects = @json($projects);
+</script>
+```
