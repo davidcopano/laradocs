@@ -153,3 +153,19 @@ echo $hashedPassword; // $2y$10$jSAr/RwmjhwioDlJErOk9OQEO7huLz9O6Iuf/udyGbHPiTNu
 // le pasamos a store() la carpeta donde se subirá el archivo
 $path = $request->file('avatar')->store('avatars');
 ```
+
+- Sobreescribir método de mostrar formulario de inicio de sesión/login (útil para poner una lógica personalizada antes de mostrar el formulario):
+
+    - En nuestro archivo `LoginController.php` (ubicado en `app/Http/Controllers/Auth`), añadimos la siguiente función
+
+```php
+// ...
+class LoginController extends Controller 
+{
+    // ...
+    public function showLoginForm()
+    {
+        return view('auth.login', ['foo' => 'bar1111']);
+    }
+}
+```
