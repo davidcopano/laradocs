@@ -24,7 +24,7 @@ Para este autocompletado debemos instalar lo siguiente mediante Composer:
 
 Una vez instalado este paquete, ya podemos generar autocompletado de modelos con el siguiente comando:
 
-`php artisan ide-helper:models <nombre_modelo>`
+`php artisan ide-helper:models`
 
 - Autocompletado para los métodos Fluent de Laravel:
 
