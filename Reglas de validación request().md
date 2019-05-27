@@ -8,6 +8,7 @@ Podemos utilizar estas reglas de la siguiente forma:
 $validatedData = request()->validate([
     'email' => 'required|email',
     'subject' => 'required|max:100',
-    'description' => 'required|max:255'
+    'description' => 'required|max:255',
+    'notes' => 'nullable|max:255'
 ]);
 ```
