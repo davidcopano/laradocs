@@ -180,3 +180,25 @@ class LoginController extends Controller
     }
 }
 ```
+
+- Cambiar nombre de error que se muestra, en vez de mostrar el propio nombre de campo de formulario:
+
+    - En el archivo `resources/lang/es/validation.php`, ir al apartado `Custom Validation Attributes` y rellenar el array de `attributes`. Ejemplo:
+    ```php
+    // ...
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Validation Attributes
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used to swap attribute place-holders
+    | with something more reader friendly such as E-Mail Address instead
+    | of "email". This simply helps us make messages a little cleaner.
+    |
+    */
+
+    'attributes' => [
+        'description' => 'descripción'
+    ],
+    ```
