@@ -50,6 +50,17 @@ return back();
        </ul>
     @endif
    ```
+
+    - Mostrar error de campo específico de formulario (`@error('nombre_del_input_del_form')`):
+    ```blade
+    @error('description')
+        <div class="alert alert-danger alert-dismissible fade show mt-3">
+            <button type="button" class="close" data-dismiss="alert"></button>
+            {{$message}}
+        </div>
+    @enderror
+    ```
+
    - **BONUS**: Comprobar si un campo especifico de un form. tiene errores:
    ```blade
    {{$errors->has('title') ? 'has-error' : ''}}
