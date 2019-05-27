@@ -31,6 +31,13 @@ $validatedAttributes = request()->validate([
 return back();
 ```
 
+- Redireccionar a ruta por nombre, pasándole parámetros:
+
+```php
+// ...
+return redirect()->route('intranet.projects.show', ['project' => $project]);
+```
+
 - Comprobar errores en un formulario:
 
     - Validamos los campos recibidos del form. (devuelve los atributos que se han validado);
